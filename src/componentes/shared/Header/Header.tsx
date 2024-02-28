@@ -1,7 +1,6 @@
 import Link from "next/link"; 
  
- export const header = () =>{
-    console.log('Hola mundo header')
+ export const Header = () =>{
     return(
         <header>
           <nav>
