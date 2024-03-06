@@ -1,6 +1,4 @@
-
 import {Roboto} from 'next/font/google'
-
 import { Header } from "app/componentes/shared/Header";
 import { Footer } from "app/componentes/shared/Footer";
 import 'app/sass/global.sass'
@@ -21,8 +19,8 @@ export default function RootLayout({
 
       <body className={roboto.className}>
       
-      <Header/>
-
+        <Header/>
+        
         {children}
 
         <Footer />
