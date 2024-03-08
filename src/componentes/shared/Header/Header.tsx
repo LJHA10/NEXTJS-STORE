@@ -9,17 +9,12 @@ import styles from './Header.module.css'
             <ul>
               <li>
               <Link href="/">
-                Home
+              Home
               </Link>
               </li>
               <li>
               <Link href="/store">
-                Store
-              </Link>
-              </li>
-              <li>
-              <Link href="/test">
-                Test
+              Store
               </Link>
               </li>
             </ul>
