@@ -25,15 +25,17 @@ export const getCollections = async () => {
   }
 
 
-  export const getCollectionsProducts = async (id: string)=> {
+  export const getCollectionProducts = async (id: string)=> {
     try{
       const response = await fetch(shopifyUrls.collections.products(id),{
         headers: new Headers({
           'X-Shopify-Access-Token': env.SHOPIFY_TOKEN
         })
       })
-      const data = await response.json()
-      return data
+
+
+      const { products } = await response.json()
+      return products
     } catch(error){
       console.log(error)
     }

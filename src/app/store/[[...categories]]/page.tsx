@@ -1,31 +1,31 @@
-import { ProductsWrapper } from "app/componentes/Store/ProductsWrapper"
-import { getCollections, getCollectionsProducts } from "app/services/shopify/collections"
-import { getProducts } from "app/services/shopify/products"
 
-
-import React from "react"
+import { getCollectionProducts } from "app/services/shopify/collections"
+import { ProductsWrapper } from "../../../componentes/Store/ProductWrapper"
+import { getCollections } from "app/services/shopify/collections"
+import { getProducts } from "../../../services/shopify/products"
 
 interface CategoryProps {
-    params: {
-        categories: string [],
-    }
-        
-        searchParams?: string
-    }
+  params: {
+    categories: string[],
+  }
+  searchParams?: string
+}
 
-export default async function Category(props : CategoryProps){
-    
-    const {categories} = props.params
-    const products = await getProducts()
-    const collections = await getCollections()
-    const selectedCollection = collections.find((collections.handle === categories[0]))
-    const productsByCollection = await getCollectionsProducts('285284008029')
-    console.log(productsByCollection)
+export default async function Category(props: CategoryProps) {
+  const { categories } = props.params
+  
+  let products = []
+  
+  const collections = await getCollections()
+   
+   if (categories?.length > 0){
+    const selectedCollectionId = collections.find((collection) => collection.handle === categories[0]).id
+     products = await getCollectionProducts(selectedCollectionId)
+   }else{
+     products = await getProducts()
+   }
 
-
-    // throw new Error('Error: Boom!!')
-
-    return ( 
-        <ProductsWrapper products={products}/>
-    )
+   return (
+     <ProductsWrapper products={products} />
+   )
 }
