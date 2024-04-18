@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import styles from "./NewAccountFrom.module.sass";
+import styles from "./New.AccountForm.module.sass";
 import { handleCreateUser } from "app/actions";
 
 export const NewAccountForm = () => {
@@ -11,7 +11,7 @@ export const NewAccountForm = () => {
   const handleSubmit = async (event) => {
      event.preventDefault();
      const formData = new FormData(event.target);
-     handleCreateUser(formData)
+     await handleCreateUser(formData)
    }
 
   return (
